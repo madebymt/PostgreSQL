@@ -1,0 +1,36 @@
+
+///write the CREATE TABLE statement to make this table.
+creat todolist
+create table todos
+
+/// INSERT
+NSERT INTO todos(title,priority,create_at,completed_at)
+VALUES('Do homework','1',current_timestamp,current_timestamp);
+
+
+/// update
+UPDATE todos SET completed_at = NULL WHERE id = 5;
+
+/// show the incomplete list
+SELECT completed_at FROM todos WHERE completed_at is Null;
+
+/// show the priority number is 1
+SELECT priority from todos WHERE id = 1;
+
+/// change column Type
+ALTER TABLE todos ALTER COLUMN priority TYPE INTEGER USING priority::integer;
+
+///
+/d+ todos;
+Table "public.todos"
+  Column    |            Type             |                     Modifiers                      | Storage  | Stats target | Description
+--------------+-----------------------------+----------------------------------------------------+----------+--------------+-------------
+id           | integer                     | not null default nextval('todos_id_seq'::regclass) | plain    |              |
+title        | character varying(255)      | not null                                           | extended |              |
+priority     | integer                     |                                                    | plain    |              |
+create_at    | timestamp without time zone |                                                    | plain    |              |
+completed_at | timestamp without time zone |                                                    | plain    |              |
+Indexes:
+  "todos_pkey" PRIMARY KEY, btree (id)
+
+/// Delete
